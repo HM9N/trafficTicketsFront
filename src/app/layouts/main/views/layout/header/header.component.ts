@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
   @Input() hideHeader: boolean;
+  @Output() menuClick = new EventEmitter<string>();
+
+  public clickOnMenu(): any{
+    this.menuClick.next('HI');
+  }
+
+
 }

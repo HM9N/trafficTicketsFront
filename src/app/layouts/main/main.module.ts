@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
-import { ContentComponent } from './components/layout/content/content.component';
-import { HeaderComponent } from './components/layout/header/header.component';
-import { LayoutComponent } from './components/layout/layout.component';
+import { ContentComponent } from './views/layout/content/content.component';
+import { HeaderComponent } from './views/layout/header/header.component';
+import { LayoutComponent } from './views/layout/layout.component';
 import { MainRoutingModule } from './main-routing';
+
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from './material.module';
 
 
 @NgModule({
@@ -11,7 +14,7 @@ import { MainRoutingModule } from './main-routing';
     HeaderComponent,
     ContentComponent
   ],
-  imports: [ MainRoutingModule ],
+  imports: [CommonModule, MainRoutingModule, MaterialModule],
   providers: []
 })
 

@@ -1,0 +1,17 @@
+<mat-sidenav-container>
+  <mat-sidenav class="w-min-250" #sidenav>
+    <mat-nav-list>
+
+      <a mat-list-item [routerLink]="'/welcome'"> HOME </a>
+      <a mat-list-item (click)="sidenav.toggle()" mat-list-item>Close</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header (menuClick)="sidenav.toggle()"></app-header>
+    <div style="height: 88vh;">
+
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

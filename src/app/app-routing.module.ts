@@ -9,7 +9,6 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'welcome', component: WelcomeComponent },
-  // { path: 'welcome', loadChildren: () => import('./layouts/login/login.module').then(m => m.HomeModule) },
   { path: 'main', loadChildren: () => import('./layouts/main/main.module').then(m => m.MainModule) },
 ];
 

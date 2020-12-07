@@ -6,9 +6,14 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
   styleUrls: ['./layout.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LayoutComponent{
+export class LayoutComponent {
 
-  constructor(){
+  events: string[] = [];
+  opened: boolean;
+
+  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+
+  constructor() {
 
   }
 
