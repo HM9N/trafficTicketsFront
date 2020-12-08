@@ -20,7 +20,8 @@ import { CommonMaterialModule } from './common-material.module';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CommonMaterialModule
+    CommonMaterialModule,
+
   ],
   bootstrap: [AppComponent]
 })

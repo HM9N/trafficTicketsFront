@@ -6,13 +6,15 @@ import { MainRoutingModule } from './main-routing';
 
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
+import { SideNavListComponent } from './content/layout/side-nav-list/side-nav-list.component';
 
 
 @NgModule({
   declarations: [
     LayoutComponent,
     HeaderComponent,
-    ContentComponent
+    ContentComponent,
+    SideNavListComponent
   ],
   imports: [CommonModule, MainRoutingModule, MaterialModule],
   providers: []

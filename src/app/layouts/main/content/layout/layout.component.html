@@ -1,16 +1,11 @@
-<mat-sidenav-container>
+<mat-sidenav-container class="h-screen bg-blue-100">
   <mat-sidenav class="w-min-250" #sidenav>
-    <mat-nav-list>
-
-      <a mat-list-item [routerLink]="'/welcome'"> HOME </a>
-      <a mat-list-item (click)="sidenav.toggle()" mat-list-item>Close</a>
-
-    </mat-nav-list>
+    <app-side-nav-list (closeSideNav)="sidenav.toggle()"></app-side-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-header (menuClick)="sidenav.toggle()"></app-header>
-      <div class="px-2 py-1 md:px-4 md:py-2  bg-red-300 ">
-        <router-outlet></router-outlet>
-      </div>
+    <div class="px-2 py-1 md:px-4 md:py-2">
+      <app-main-content></app-main-content>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
