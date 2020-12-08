@@ -7,15 +7,15 @@ import { TrafficTicketDetailsComponent } from './details/traffic-ticket-details.
 const routes: Routes = [
   {
     path: '',
-    pathMatch: "full",
-    redirectTo: "list"
+    pathMatch: 'full',
+    redirectTo: 'list'
   },
   {
-    path: "list",
+    path: 'list',
     component: TrafficTicketListComponent
   },
   {
-    path: "list/:id",
+    path: 'list/:id',
     component: TrafficTicketDetailsComponent
   }
 ];

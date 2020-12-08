@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from './views/layout/layout.component';
+import { LayoutComponent } from './content/layout/layout.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
 const routes: Routes = [
@@ -15,7 +15,7 @@ const routes: Routes = [
       },
       {
         path: 'traffic-ticket-mng',
-        loadChildren: () => import('./views/components/traffic-ticket-mng/traffic-ticket.module').then(m => m.TrafficTicketModule)
+        loadChildren: () => import('./content/pages/traffic-ticket-mng/traffic-ticket.module').then(m => m.TrafficTicketModule)
       }
     ]
   }
