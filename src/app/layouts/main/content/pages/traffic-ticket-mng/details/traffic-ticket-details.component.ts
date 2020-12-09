@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: [ './traffic-ticket-details.component.scss']
 })
 export class TrafficTicketDetailsComponent {
+  ticketCode: string;
 
 }

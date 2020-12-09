@@ -1,10 +1,10 @@
 import { ApiService } from './../../../../../../services/traffic-ticket-service/Api.service';
 
 import { Component, OnInit } from '@angular/core';
-import { DataSource } from '@angular/cdk/table';
 import { FormGroup, FormControl } from '@angular/forms';
-import { debounceTime, map, mergeMap, startWith, takeUntil } from 'rxjs/operators';
+import { debounceTime, mergeMap, startWith, takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-traffic-ticket-list',
@@ -13,8 +13,8 @@ import { Subject } from 'rxjs';
 })
 export class TrafficTicketListComponent implements OnInit {
 
-  displayedColumns: string[] = ['state', 'driver', 'location', 'date', 'description' ];
-  dataSource: any[] = [ ];
+  displayedColumns: string[] = ['state', 'driver', 'location', 'date', 'description', 'actions'];
+  dataSource: any[] = [];
 
   filterForm: FormGroup;
 
@@ -24,7 +24,7 @@ export class TrafficTicketListComponent implements OnInit {
 
   constructor(
     private readonly apiService: ApiService
-  ){
+  ) {
 
   }
 
@@ -33,24 +33,30 @@ export class TrafficTicketListComponent implements OnInit {
     this.buildFilterForm();
   }
 
-  buildFilterForm(): void{
+  buildFilterForm(): void {
+    console.log(moment().startOf('day').valueOf());
+
     this.filterForm = new FormGroup({
-      startDate: new FormControl(Date.now()),
-      endDate: new FormControl(Date.now()),
+      startDate: new FormControl( Date.now() ),
+      endDate: new FormControl( moment().endOf('day') ),
       agent: new FormControl('')
     });
 
     this.filterForm.valueChanges.pipe(
       debounceTime(400),
-      startWith(1),
-      mergeMap(value => this.apiService.getTicketList$(value) ),
+      startWith(this.filterForm.value),
+      mergeMap(value => this.apiService.getTicketList$(value)),
       takeUntil(this.stopSubscriptions),
+      tap(response => console.log({ response }))
     ).subscribe(
       (value: any) => {
-        const list = value.tickets;
-        console.log('FILTERS', list);
+        const list = (value || {}).tickets || [];
+        console.log('DATA RESULT', list);
         this.dataIsLoading = false;
         this.dataSource = list;
+      },
+      (err) => {
+        this.dataIsLoading = true;
       }
     );
   }
