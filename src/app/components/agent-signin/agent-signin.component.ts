@@ -11,7 +11,7 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 })
 export class AgentSigninComponent implements OnInit {
 
-  text = "El token ha caducado";
+  text = "El usuario no existe";
 
   agent = {
     cc: '',

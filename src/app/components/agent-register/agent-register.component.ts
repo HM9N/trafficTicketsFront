@@ -11,15 +11,18 @@ import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 })
 export class AgentRegisterComponent implements OnInit {
 
-  text = "El token ha caducado";
+  text = '';
 
   agent = {
+    name: '',
     cc: '',
-    password: ''
+    age: '',
+    location:'',
+    password:''
   };
   error = false;
   constructor(private agentService: AgentService, private router: Router, private readonly dialog: MatDialog) {
-    alert("Está en proceso... Jhon");
+   
   }
 
   ngOnInit(): void {}
@@ -28,16 +31,12 @@ export class AgentRegisterComponent implements OnInit {
     console.log(this.agent);
     this.agentService.signUp(this.agent).subscribe(
       (res) => {
-        if (res.message == 'accedido') {
-          this.router.navigate(['/main/traffic-ticket-mng']);
-        } else if(res.message == this.text){
-          this.openDialog("");
-        }
-        else {
-          this.error = true;
-        }
+        if (res.message == 'registrado') {
+          this.router.navigate(['/signin']);
+        } 
       },
       (err) => {this.error = true
+        console.log(err.error.message);
            this.openDialog(err);    
       }
     );
