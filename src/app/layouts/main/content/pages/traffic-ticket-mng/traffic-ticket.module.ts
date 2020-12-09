@@ -9,13 +9,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { PayTicketDialogComponent } from './list/dialogs/pay-ticket-dialog/PayTicketDialog.component';
 
 @NgModule({
   declarations: [
     TrafficTicketListComponent,
-    TrafficTicketDetailsComponent
+    TrafficTicketDetailsComponent,
+    PayTicketDialogComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +30,9 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     MatDatepickerModule,
     MatNativeDateModule,
     MatPaginatorModule,
+    MatButtonModule,
+    MatDialogModule,
+
     NgxSkeletonLoaderModule
 
   ],

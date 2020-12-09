@@ -1,3 +1,4 @@
+import { InternalcommonModule } from './../../common/Internalcommon.module';
 import { NgModule } from '@angular/core';
 import { ContentComponent } from './content/layout/content/content.component';
 import { HeaderComponent } from './content/layout/header/header.component';
@@ -16,7 +17,7 @@ import { SideNavListComponent } from './content/layout/side-nav-list/side-nav-li
     ContentComponent,
     SideNavListComponent
   ],
-  imports: [CommonModule, MainRoutingModule, MaterialModule],
+  imports: [CommonModule, MainRoutingModule, MaterialModule, InternalcommonModule],
   providers: []
 })
 
