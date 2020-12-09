@@ -1,10 +1,12 @@
-import { ApiService } from './../../../../../../services/traffic-ticket-service/Api.service';
+import { TrafficTicketService } from '../../../../../../services/traffic-ticket-service/traffic-ticket.service';
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { debounceTime, mergeMap, startWith, takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import * as moment from 'moment';
+import { MatDialog } from '@angular/material/dialog';
+import { PayTicketDialogComponent } from './dialogs/pay-ticket-dialog/PayTicketDialog.component';
 
 @Component({
   selector: 'app-traffic-ticket-list',
@@ -23,7 +25,8 @@ export class TrafficTicketListComponent implements OnInit {
 
 
   constructor(
-    private readonly apiService: ApiService
+    private readonly apiService: TrafficTicketService,
+    private readonly dialog: MatDialog
   ) {
 
   }
@@ -59,6 +62,15 @@ export class TrafficTicketListComponent implements OnInit {
         this.dataIsLoading = true;
       }
     );
+  }
+
+
+  payTicket(): void {
+    this.dialog.open(PayTicketDialogComponent, {
+      data: {
+        animal: 'panda'
+      }
+    });
   }
 
   submitFiltersForm(): void {

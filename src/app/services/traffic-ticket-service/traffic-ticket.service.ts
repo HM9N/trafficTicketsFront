@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class TrafficTicketService {
 
 
   constructor(
@@ -26,6 +26,13 @@ export class ApiService {
     const route = 'ticket';
     return this.httpClient.get(`${host}${route}`);
 
+  }
+
+  getTicketDetails$(id: string): Observable<any>{
+    const host = environment.endpoint;
+    const route = 'ticket/getTicket';
+
+    return this.httpClient.get(`${host}${route}`, { params: { id } })
   }
 
 }
