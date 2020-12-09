@@ -23,10 +23,11 @@ export class AgentSigninComponent implements OnInit {
   ngOnInit(): void {}
 
   signIn() {
+    console.log(this.agent);
     this.agentService.signIn(this.agent).subscribe(
       (res) => {
         if (res.message == 'accedido') {
-          this.router.navigate(['/ticket']);
+          this.router.navigate(['/main/traffic-ticket-mng']);
         } else if(res.message == this.text){
           this.openDialog("");
         }

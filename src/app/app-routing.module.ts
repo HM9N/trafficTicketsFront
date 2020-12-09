@@ -10,7 +10,7 @@ const routes: Routes = [
     redirectTo: 'welcome',
     pathMatch: 'full',
   },
-  { path: 'signin',  component: AgentSigninComponent },
+  { path: 'signin',  component: AgentSigninComponent, pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent },
   { path: 'main', loadChildren: () => import('./layouts/main/main.module').then(m => m.MainModule) },
 ];
