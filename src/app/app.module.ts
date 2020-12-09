@@ -13,13 +13,15 @@ import { InfoDialogComponent } from './components/info-dialog/info-dialog.compon
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { AgentRegisterComponent } from './components/agent-register/agent-register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     AgentSigninComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
+    AgentRegisterComponent
 
   ],
   imports: [

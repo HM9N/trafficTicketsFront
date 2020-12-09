@@ -12,7 +12,7 @@ export class AgentService {
   constructor(private http: HttpClient, private router: Router) {}
 
   signUp(agent) {
-    return this.http.post<any>(this.URL + '/owner/', agent); 
+    return this.http.post<any>(this.URL + '/signup', agent); 
   }
   signIn(agent){
     return this.http.post<any>(this.URL + '/signin', agent);
