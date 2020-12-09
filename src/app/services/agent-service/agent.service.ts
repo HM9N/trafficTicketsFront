@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 })
 export class AgentService {
 
-  //private URL = 'https://demoars.herokuapp.com'; // donde está la api
-  private URL = 'http://localhost:3000'; // donde está la api
+  private URL = 'https://demoars.herokuapp.com'; // donde está la api
+  //private URL = 'http://localhost:3000'; // donde está la api
   constructor(private http: HttpClient, private router: Router) {}
 
   signUp(agent) {
