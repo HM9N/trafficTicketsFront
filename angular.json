@@ -130,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "trafficTicketsFront"
+  "defaultProject": "trafficTicketsFront",
+  "cli": {
+    "analytics": "0b357126-2adc-4e8b-af7d-d32dfccba3fb"
+  }
 }
