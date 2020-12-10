@@ -5,37 +5,38 @@ import {AgentService} from '../../services/agent-service/agent.service';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 
 @Component({
-  selector: 'app-agent-signin',
-  templateUrl: './agent-signin.component.html',
-  styleUrls: ['./agent-signin.component.scss']
+  selector: 'app-agent-register',
+  templateUrl: './agent-register.component.html',
+  styleUrls: ['./agent-register.component.scss']
 })
-export class AgentSigninComponent implements OnInit {
+export class AgentRegisterComponent implements OnInit {
 
-  text = "El usuario no existe";
+  text = '';
 
   agent = {
+    name: '',
     cc: '',
-    password: ''
+    age: '',
+    location:'',
+    password:''
   };
   error = false;
-  constructor(private agentService: AgentService, private router: Router, private readonly dialog: MatDialog) {}
+  constructor(private agentService: AgentService, private router: Router, private readonly dialog: MatDialog) {
+   
+  }
 
   ngOnInit(): void {}
 
-  signIn() {
+  signUp() {
     console.log(this.agent);
-    this.agentService.signIn(this.agent).subscribe(
+    this.agentService.signUp(this.agent).subscribe(
       (res) => {
-        if (res.message == 'accedido') {
-          this.router.navigate(['/main/traffic-ticket-mng']);
-        } else if(res.message == this.text){
-          this.openDialog("");
-        }
-        else {
-          this.error = true;
-        }
+        if (res.message == 'registrado') {
+          this.router.navigate(['/signin']);
+        } 
       },
       (err) => {this.error = true
+        console.log(err.error.message);
            this.openDialog(err);    
       }
     );
@@ -57,4 +58,5 @@ export class AgentSigninComponent implements OnInit {
 
   });
   }
+
 }
