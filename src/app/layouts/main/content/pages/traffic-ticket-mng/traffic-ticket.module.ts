@@ -15,12 +15,14 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { PayTicketDialogComponent } from './list/dialogs/pay-ticket-dialog/PayTicketDialog.component';
+import { CreateTicketDialogComponent } from './list/dialogs/create-ticket-dialog/CreateTicketDialog.component';
 
 @NgModule({
   declarations: [
     TrafficTicketListComponent,
     TrafficTicketDetailsComponent,
-    PayTicketDialogComponent
+    PayTicketDialogComponent,
+    CreateTicketDialogComponent
   ],
   imports: [
     CommonModule,

@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import * as moment from 'moment';
 import { MatDialog } from '@angular/material/dialog';
 import { PayTicketDialogComponent } from './dialogs/pay-ticket-dialog/PayTicketDialog.component';
+import { CreateTicketDialogComponent } from './dialogs/create-ticket-dialog/CreateTicketDialog.component';
 
 @Component({
   selector: 'app-traffic-ticket-list',
@@ -75,6 +76,16 @@ export class TrafficTicketListComponent implements OnInit {
 
   submitFiltersForm(): void {
     console.log('form', this.filterForm.value);
+
+  }
+
+  openDialogToCreateATicket(): void{
+
+    this.dialog.open(CreateTicketDialogComponent, {
+      data: {
+
+      }
+    });
 
   }
 
