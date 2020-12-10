@@ -1,3 +1,4 @@
+import { InternalcommonModule } from './../../../../../common/Internalcommon.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +33,7 @@ import { PayTicketDialogComponent } from './list/dialogs/pay-ticket-dialog/PayTi
     MatPaginatorModule,
     MatButtonModule,
     MatDialogModule,
+    InternalcommonModule,
 
     NgxSkeletonLoaderModule
 

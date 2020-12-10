@@ -3,6 +3,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { FormControl, FormGroup } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-traffic-ticket-details',
@@ -13,6 +15,7 @@ export class TrafficTicketDetailsComponent implements OnInit, OnDestroy {
 
   private stopSubscriptions = new Subject<boolean>();
   public currentTicket: any;
+  filterForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +27,8 @@ export class TrafficTicketDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const ticketId = this.route.snapshot.params.id;
     console.log('TICKER_ID', ticketId);
+
+    this.buildFilterForm();
 
 
     this.trafficTicketService.getTicketDetails$(ticketId).pipe(
@@ -38,6 +43,17 @@ export class TrafficTicketDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.stopSubscriptions.next(true);
+  }
+
+  buildFilterForm(): void {
+    console.log(moment().startOf('day').valueOf());
+
+    this.filterForm = new FormGroup({
+      startDate: new FormControl( Date.now() ),
+      endDate: new FormControl( moment().endOf('day') ),
+      agent: new FormControl('')
+    });
+
   }
 
 }
