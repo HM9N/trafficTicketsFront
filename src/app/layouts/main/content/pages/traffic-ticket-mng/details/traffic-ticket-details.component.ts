@@ -45,10 +45,13 @@ export class TrafficTicketDetailsComponent implements OnInit, OnDestroy {
 
   buildTicketForm(): void {
 
+    const { date, description, driver, location, state  } = this.currentTicket;
     this.ticketForm = new FormGroup({
-      startDate: new FormControl( Date.now() ),
-      endDate: new FormControl( moment().endOf('day') ),
-      agent: new FormControl('')
+      date: new FormControl(moment(date).format('DD/MM/YYYY')),
+      state: new FormControl( state ? 'Activo': 'Paga'),
+      driver: new FormControl(driver),
+      location: new FormControl(location),
+      description: new FormControl(description),
     });
 
   }

@@ -1,16 +1,42 @@
 <div>
 
   <div *ngIf="currentTicket" class="w-full">
-    <span class="w-full" class="capitalize font-bold text-2xl ">Detalles de la multa: {{ currentTicket._id }}</span>
+    <span class="w-full" class="capitalize font-bold text-2xl mb-4 ">Detalles de la multa: {{ currentTicket._id }}</span>
 
     <!-- READ ONLY FORM -->
     <div class="w-full">
       <form [formGroup]="ticketForm">
-        <!-- AGENT -->
+
+        <!-- DATE -->
         <mat-form-field class="px-1 py-2 w-full sm:w-1/2 md:w-1/4 lg:w-1/5">
-          <mat-label>Agente</mat-label>
-          <input matInput readonly formControlName="agent" autocomplete="off" placeholder="agente">
+          <mat-label>Fecha de Registro</mat-label>
+          <input matInput readonly formControlName="date" placeholder="Fecha de Registro">
         </mat-form-field>
+
+         <!-- STATE -->
+         <mat-form-field class="px-1 py-2 w-full sm:w-1/2 md:w-1/4 lg:w-1/5">
+          <mat-label>Estado</mat-label>
+          <input matInput readonly formControlName="state" placeholder="Estado">
+        </mat-form-field>
+
+        <!-- DRIVER -->
+        <mat-form-field class="px-1 py-2 w-full sm:w-1/2 md:w-1/4 lg:w-1/5">
+          <mat-label>Conductor</mat-label>
+          <input matInput readonly formControlName="driver" placeholder="Conductor">
+        </mat-form-field>
+
+        <!-- LOCATION -->
+        <mat-form-field class="px-1 py-2 w-full sm:w-1/2 md:w-1/4 lg:w-1/5">
+          <mat-label>Ubicación</mat-label>
+          <input matInput readonly formControlName="location" placeholder="Ubicación">
+        </mat-form-field>
+
+        <!-- DESCRIPTION -->
+        <mat-form-field class="px-1 py-2 w-full sm:w-1/2 md:w-1/4 lg:w-1/5">
+          <mat-label>Descripción</mat-label>
+          <input matInput readonly formControlName="description" placeholder="Descripción">
+        </mat-form-field>
+
 
       </form>
     </div>
