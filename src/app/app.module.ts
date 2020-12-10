@@ -6,14 +6,13 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { CommonMaterialModule } from './common-material.module';
 import { AgentSigninComponent } from './components/agent-signin/agent-signin.component';
 import { InfoDialogComponent } from './components/info-dialog/info-dialog.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { AgentRegisterComponent } from './components/agent-register/agent-register.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import {MatMenuModule} from '@angular/material/menu';
     AgentSigninComponent,
     InfoDialogComponent,
     AgentRegisterComponent
-
   ],
   imports: [
     BrowserModule,
@@ -32,9 +30,7 @@ import {MatMenuModule} from '@angular/material/menu';
     CommonMaterialModule,
     MatDialogModule,
     MatButtonModule,
-    FormsModule,
-    MatMenuModule
-
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })

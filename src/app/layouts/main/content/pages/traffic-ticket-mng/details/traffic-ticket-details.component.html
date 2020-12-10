@@ -1,12 +1,19 @@
 <div>
 
-
-
   <div *ngIf="currentTicket" class="w-full">
     <span class="w-full" class="capitalize font-bold text-2xl ">Detalles de la multa: {{ currentTicket._id }}</span>
 
+    <!-- READ ONLY FORM -->
+    <div class="w-full">
+      <form [formGroup]="ticketForm">
+        <!-- AGENT -->
+        <mat-form-field class="px-1 py-2 w-full sm:w-1/2 md:w-1/4 lg:w-1/5">
+          <mat-label>Agente</mat-label>
+          <input matInput readonly formControlName="agent" autocomplete="off" placeholder="agente">
+        </mat-form-field>
 
-
+      </form>
+    </div>
 
   </div>
 

@@ -15,7 +15,7 @@ export class TrafficTicketDetailsComponent implements OnInit, OnDestroy {
 
   private stopSubscriptions = new Subject<boolean>();
   public currentTicket: any;
-  filterForm: FormGroup;
+  ticketForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,15 +28,13 @@ export class TrafficTicketDetailsComponent implements OnInit, OnDestroy {
     const ticketId = this.route.snapshot.params.id;
     console.log('TICKER_ID', ticketId);
 
-    this.buildFilterForm();
-
-
     this.trafficTicketService.getTicketDetails$(ticketId).pipe(
       takeUntil(this.stopSubscriptions)
     ).subscribe(
       (response: any) => {
         this.currentTicket = response?.tickets;
         console.log('CURRENT TICKET', this.currentTicket);
+        this.buildTicketForm();
       }
     );
   }
@@ -45,10 +43,9 @@ export class TrafficTicketDetailsComponent implements OnInit, OnDestroy {
     this.stopSubscriptions.next(true);
   }
 
-  buildFilterForm(): void {
-    console.log(moment().startOf('day').valueOf());
+  buildTicketForm(): void {
 
-    this.filterForm = new FormGroup({
+    this.ticketForm = new FormGroup({
       startDate: new FormControl( Date.now() ),
       endDate: new FormControl( moment().endOf('day') ),
       agent: new FormControl('')
