@@ -4,8 +4,8 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <app-header (menuClick)="sidenav.toggle()"></app-header>
-    <div class="auto-height px-2 py-1 md:px-4 md:py-2 border-red-700">
-      <app-main-content></app-main-content>
+    <div class="bg-blue-50" style="height: calc(100vh - 64px);">
+      <app-main-content class="h-full"></app-main-content>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

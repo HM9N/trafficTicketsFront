@@ -82,6 +82,7 @@ export class TrafficTicketListComponent implements OnInit {
   openDialogToCreateATicket(): void{
 
     this.dialog.open(CreateTicketDialogComponent, {
+      minWidth: '40%',
       data: {
 
       }

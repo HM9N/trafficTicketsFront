@@ -6,15 +6,12 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'welcome',
-    pathMatch: 'full',
-  },
-  { path: 'signin',  component: AgentSigninComponent, pathMatch: 'full' },
-  {path: 'register', component: AgentRegisterComponent, pathMatch: 'full'},
+  { path: '', redirectTo: 'welcome', pathMatch: 'full'},
+  { path: 'playground', loadChildren: () => import('./layouts/playground/playground.module').then(m => m.PlaygroundModule)  },
+  { path: 'signin', component: AgentSigninComponent, pathMatch: 'full' },
+  { path: 'register', component: AgentRegisterComponent, pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent },
-  { path: 'main', loadChildren: () => import('./layouts/main/main.module').then(m => m.MainModule) },
+  { path: 'main', loadChildren: () => import('./layouts/main/main.module').then(m => m.MainModule) }
 ];
 
 @NgModule({
