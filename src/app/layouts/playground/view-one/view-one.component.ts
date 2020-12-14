@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewOneComponent implements OnInit {
 
+  sidebarOpen = false;
+  notificationOpen = false;
+  dropdownOpen=false;
+
   constructor() { }
 
   ngOnInit() {
