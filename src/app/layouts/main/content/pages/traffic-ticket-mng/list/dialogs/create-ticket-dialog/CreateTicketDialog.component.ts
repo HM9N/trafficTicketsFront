@@ -1,3 +1,4 @@
+import { TrafficTicketService } from './../../../../../../../../services/traffic-ticket-service/traffic-ticket.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -13,11 +14,13 @@ export class CreateTicketDialogComponent implements OnInit {
 
   constructor(
     private readonly dialogRef: MatDialogRef<CreateTicketDialogComponent>,
+    private apiService: TrafficTicketService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit(): void {
-    this.buildTicketForm()
+    this.buildTicketForm();
+
 
   }
 
@@ -32,7 +35,18 @@ export class CreateTicketDialogComponent implements OnInit {
   }
 
   createTicket(): void {
+    const formValue = this.ticketForm.getRawValue();
+
     console.log(this.ticketForm.value);
+    this.apiService.createTicket$({
+      description: formValue.description,
+      driver: parseInt(formValue.cc, 10),
+      location: formValue.location,
+      agent: 0
+    }).subscribe((d) => {
+      console.log(d);
+    });
+
 
   }
 

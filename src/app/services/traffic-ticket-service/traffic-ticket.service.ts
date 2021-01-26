@@ -32,7 +32,14 @@ export class TrafficTicketService {
     const host = environment.endpoint;
     const route = 'ticket/getTicket';
 
-    return this.httpClient.get(`${host}${route}`, { params: { id } })
+    return this.httpClient.get(`${host}${route}`, { params: { id } });
+  }
+
+  createTicket$(ticket): Observable<any>{
+    const host = environment.endpoint;
+    const route = 'ticket';
+
+    return this.httpClient.post(`${host}${route}`, { ...ticket });
   }
 
 }

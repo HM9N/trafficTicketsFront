@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // endpoint: "https://demoars.herokuapp.com/",
-  endpoint: "http://localhost:3000"
+  endpoint: 'http://localhost:3000'
 };
 
 /*
