@@ -41,8 +41,8 @@ export class TrafficTicketListComponent implements OnInit {
     // console.log(moment().startOf('day').valueOf());
 
     this.filterForm = new FormGroup({
-      startDate: new FormControl( Date.now() ),
-      endDate: new FormControl( moment().endOf('day') .valueOf()),
+      startDate: new FormControl( new Date(moment().startOf('month').valueOf()) ),
+      endDate: new FormControl( new Date(moment().endOf('month').valueOf()) ),
       driver: new FormControl('')
     });
 
@@ -50,6 +50,7 @@ export class TrafficTicketListComponent implements OnInit {
       debounceTime(400),
       startWith(this.filterForm.value),
       map(value => {
+
         return ({
           driver: parseInt(value.driver, 10),
           startDate: moment(value.startDate).valueOf(),
