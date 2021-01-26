@@ -2,7 +2,7 @@ import { TrafficTicketService } from '../../../../../../services/traffic-ticket-
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { debounceTime, mergeMap, startWith, takeUntil, tap } from 'rxjs/operators';
+import { debounceTime, map, mergeMap, startWith, takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import * as moment from 'moment';
 import { MatDialog } from '@angular/material/dialog';
@@ -38,17 +38,24 @@ export class TrafficTicketListComponent implements OnInit {
   }
 
   buildFilterForm(): void {
-    console.log(moment().startOf('day').valueOf());
+    // console.log(moment().startOf('day').valueOf());
 
     this.filterForm = new FormGroup({
       startDate: new FormControl( Date.now() ),
-      endDate: new FormControl( moment().endOf('day') ),
-      agent: new FormControl('')
+      endDate: new FormControl( moment().endOf('day') .valueOf()),
+      driver: new FormControl('')
     });
 
     this.filterForm.valueChanges.pipe(
       debounceTime(400),
       startWith(this.filterForm.value),
+      map(value => {
+        return ({
+          driver: parseInt(value.driver, 10),
+          startDate: moment(value.startDate).valueOf(),
+          endDate: moment(value.endDate).valueOf()
+         });
+      }),
       mergeMap(value => this.apiService.getTicketList$(value)),
       takeUntil(this.stopSubscriptions),
       tap(response => console.log({ response }))

@@ -20,11 +20,9 @@ export class TrafficTicketService {
   }
 
   getTicketList$(filters: any): Observable<any> {
-    console.log('getTicketList$', filters);
-
     const host = environment.endpoint;
     const route = 'ticket';
-    return this.httpClient.get(`${host}${route}`);
+    return this.httpClient.get(`${host}${route}`, { params: filters  });
 
   }
 

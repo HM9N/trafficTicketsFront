@@ -45,6 +45,7 @@ export class CreateTicketDialogComponent implements OnInit {
       agent: 0
     }).subscribe((d) => {
       console.log(d);
+      this.closeDialog();
     });
 
 
